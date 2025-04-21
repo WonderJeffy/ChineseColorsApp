@@ -11,6 +11,7 @@
 
 import SwiftUI
 
+
 // 主内容视图
 struct ContentView: View {
     // 加载并按类别分组颜色数据
@@ -63,7 +64,12 @@ struct ContentView: View {
         }
         // 在 iPad 上使用堆叠导航样式，避免分栏视图
         .navigationViewStyle(StackNavigationViewStyle())
+        .enableInjection()
     }
+
+    #if DEBUG
+    @ObserveInjection var forceRedraw
+    #endif
 }
 
 #Preview {

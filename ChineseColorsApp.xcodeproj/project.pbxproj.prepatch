@@ -6,11 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		9EC2CD572DB645BE00A2DD9A /* FVendors in Frameworks */ = {isa = PBXBuildFile; productRef = 9EC2CD562DB645BE00A2DD9A /* FVendors */; };
-		9EC2CD742DB6617E00A2DD9A /* ColorfulX in Frameworks */ = {isa = PBXBuildFile; productRef = 9EC2CD732DB6617E00A2DD9A /* ColorfulX */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		9E5B80D52DB259A200497AF2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -57,8 +52,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EC2CD572DB645BE00A2DD9A /* FVendors in Frameworks */,
-				9EC2CD742DB6617E00A2DD9A /* ColorfulX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,8 +112,6 @@
 			);
 			name = ChineseColorsApp;
 			packageProductDependencies = (
-				9EC2CD562DB645BE00A2DD9A /* FVendors */,
-				9EC2CD732DB6617E00A2DD9A /* ColorfulX */,
 			);
 			productName = ChineseColorsApp;
 			productReference = 9E5B80C32DB259A100497AF2 /* ChineseColorsApp.app */;
@@ -204,10 +195,6 @@
 			);
 			mainGroup = 9E5B80BA2DB259A100497AF2;
 			minimizedProjectReferenceProxies = 1;
-			packageReferences = (
-				9EC2CD552DB645BE00A2DD9A /* XCRemoteSwiftPackageReference "FVendors" */,
-				9EC2CD722DB6617E00A2DD9A /* XCRemoteSwiftPackageReference "ColorfulX" */,
-			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 9E5B80C42DB259A100497AF2 /* Products */;
 			projectDirPath = "";
@@ -317,7 +304,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -339,10 +325,6 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = (
-					"-Xlinker",
-					"-interposable",
-				);
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -411,7 +393,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ChineseColorsApp/Preview Content\"";
 				DEVELOPMENT_TEAM = D7YALX24NV;
-				ENABLE_BITCODE = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -430,10 +411,6 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
-				OTHER_LDFLAGS = (
-					"-Xlinker",
-					"-interposable",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = wonderjeffy.ChineseColorsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -491,15 +468,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = D7YALX24NV;
-				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
-				OTHER_LDFLAGS = (
-					"-Xlinker",
-					"-interposable",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = wonderjeffy.ChineseColorsAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -541,15 +513,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = D7YALX24NV;
-				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
-				OTHER_LDFLAGS = (
-					"-Xlinker",
-					"-interposable",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = wonderjeffy.ChineseColorsAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -624,38 +591,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		9EC2CD552DB645BE00A2DD9A /* XCRemoteSwiftPackageReference "FVendors" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/WonderJeffy/FVendors";
-			requirement = {
-				branch = develop;
-				kind = branch;
-			};
-		};
-		9EC2CD722DB6617E00A2DD9A /* XCRemoteSwiftPackageReference "ColorfulX" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Lakr233/ColorfulX";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.6.4;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		9EC2CD562DB645BE00A2DD9A /* FVendors */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9EC2CD552DB645BE00A2DD9A /* XCRemoteSwiftPackageReference "FVendors" */;
-			productName = FVendors;
-		};
-		9EC2CD732DB6617E00A2DD9A /* ColorfulX */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9EC2CD722DB6617E00A2DD9A /* XCRemoteSwiftPackageReference "ColorfulX" */;
-			productName = ColorfulX;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9E5B80BB2DB259A100497AF2 /* Project object */;
 }
