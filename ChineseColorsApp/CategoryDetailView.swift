@@ -3,7 +3,7 @@ import SwiftUI
 
 struct CategoryDetailView: View {
     let category: String
-    let colors: [ColorInfo]
+    let colors: [ColorModel]
 
     var body: some View {
         ScrollViewReader { proxy in

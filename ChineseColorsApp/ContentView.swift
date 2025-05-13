@@ -15,7 +15,7 @@ import SwiftUI
 // 主内容视图
 struct ContentView: View {
     // 加载并按类别分组颜色数据
-    let groupedColors: [String: [ColorInfo]] = loadColorData()
+    let groupedColors: [String: [ColorModel]] = loadColorJson()
 
     // 搜索文本状态
     @State private var searchText: String = ""
@@ -34,9 +34,9 @@ struct ContentView: View {
     }
 
     // 搜索过滤逻辑
-    var filteredColors: [ColorInfo] {
+    var filteredColors: [ColorModel] {
         groupedColors.values.flatMap { $0 }.filter { colorInfo in
-            searchText.isEmpty || (colorInfo.name?.contains(searchText) ?? false)
+            searchText.isEmpty || (colorInfo.name.contains(searchText) ?? false)
         }
     }
 
