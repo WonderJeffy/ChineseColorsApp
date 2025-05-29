@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E18B6E92DE85E9E0068F5C0 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 9E18B6E82DE85E9E0068F5C0 /* Collections */; };
+		9E18B6EB2DE85E9E0068F5C0 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 9E18B6EA2DE85E9E0068F5C0 /* OrderedCollections */; };
 		9EC2CD572DB645BE00A2DD9A /* FVendors in Frameworks */ = {isa = PBXBuildFile; productRef = 9EC2CD562DB645BE00A2DD9A /* FVendors */; };
 		9EC2CD742DB6617E00A2DD9A /* ColorfulX in Frameworks */ = {isa = PBXBuildFile; productRef = 9EC2CD732DB6617E00A2DD9A /* ColorfulX */; };
 /* End PBXBuildFile section */
@@ -57,7 +59,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E18B6E92DE85E9E0068F5C0 /* Collections in Frameworks */,
 				9EC2CD572DB645BE00A2DD9A /* FVendors in Frameworks */,
+				9E18B6EB2DE85E9E0068F5C0 /* OrderedCollections in Frameworks */,
 				9EC2CD742DB6617E00A2DD9A /* ColorfulX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,6 +125,8 @@
 			packageProductDependencies = (
 				9EC2CD562DB645BE00A2DD9A /* FVendors */,
 				9EC2CD732DB6617E00A2DD9A /* ColorfulX */,
+				9E18B6E82DE85E9E0068F5C0 /* Collections */,
+				9E18B6EA2DE85E9E0068F5C0 /* OrderedCollections */,
 			);
 			productName = ChineseColorsApp;
 			productReference = 9E5B80C32DB259A100497AF2 /* ChineseColorsApp.app */;
@@ -207,6 +213,7 @@
 			packageReferences = (
 				9EC2CD552DB645BE00A2DD9A /* XCRemoteSwiftPackageReference "FVendors" */,
 				9EC2CD722DB6617E00A2DD9A /* XCRemoteSwiftPackageReference "ColorfulX" */,
+				9E18B6E72DE85E9E0068F5C0 /* XCRemoteSwiftPackageReference "swift-collections" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 9E5B80C42DB259A100497AF2 /* Products */;
@@ -628,6 +635,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		9E18B6E72DE85E9E0068F5C0 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
 		9EC2CD552DB645BE00A2DD9A /* XCRemoteSwiftPackageReference "FVendors" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/WonderJeffy/FVendors";
@@ -647,6 +662,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9E18B6E82DE85E9E0068F5C0 /* Collections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E18B6E72DE85E9E0068F5C0 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = Collections;
+		};
+		9E18B6EA2DE85E9E0068F5C0 /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E18B6E72DE85E9E0068F5C0 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
+		};
 		9EC2CD562DB645BE00A2DD9A /* FVendors */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9EC2CD552DB645BE00A2DD9A /* XCRemoteSwiftPackageReference "FVendors" */;
