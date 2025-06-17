@@ -40,11 +40,6 @@ struct ColorCardView: View {
         .background(Color(UIColor.secondarySystemBackground))  // 使用系统辅助背景色
         .cornerRadius(8)  // 圆角
         .shadow(color: Color.black.opacity(0.1), radius: 3, x: 0, y: 2)  // 添加细微阴影
-        .enableInjection()
     }
-
-    #if DEBUG
-    @ObserveInjection var forceRedraw
-    #endif
 }
 
