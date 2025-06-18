@@ -30,6 +30,23 @@ struct ContentView: View {
             }
         }
     }
+    
+    // 搜索到的单个颜色
+    var filteredColors: [ColorModel] {
+        if searchText.isEmpty {
+            return []
+        } else {
+            var allColors: [ColorModel] = []
+            for category in store.sortedCategories {
+                let colorsInCategory = store.colorDict[category] ?? []
+                let matchingColors = colorsInCategory.filter { color in
+                    color.name.contains(searchText)
+                }
+                allColors.append(contentsOf: matchingColors)
+            }
+            return allColors
+        }
+    }
 
     // 定义网格布局：自适应列宽，最小宽度 160
     let columns: [GridItem] = [
@@ -51,34 +68,42 @@ struct ContentView: View {
                                 .padding(.horizontal)
                         }
                         LazyVGrid(columns: columns, spacing: 15) {
-                            ForEach(filteredCategories, id: \.self) { category in
-                                NavigationLink(
-                                    destination: CategoryDetailView(
-                                        category: category,
-                                        colors: store.colorDict[category] ?? []
-                                    )
-                                ) {
-                                    VStack(alignment: .leading) {
-                                        Text(category)
-                                            .font(.headline)
-                                            .padding(.bottom, 5)
+                            if searchText.isEmpty {
+                                // 显示分组
+                                ForEach(filteredCategories, id: \.self) { category in
+                                    NavigationLink(
+                                        destination: CategoryDetailView(
+                                            category: category,
+                                            colors: store.colorDict[category] ?? []
+                                        )
+                                    ) {
+                                        VStack(alignment: .leading) {
+                                            Text(category)
+                                                .font(.headline)
+                                                .padding(.bottom, 5)
 
-                                        // 显示颜色小格子
-                                        LazyVGrid(
-                                            columns: [GridItem(.adaptive(minimum: 10))],
-                                            spacing: 5
-                                        ) {
-                                            ForEach(store.colorDict[category] ?? [], id: \.name) {
-                                                colorInfo in
-                                                Rectangle()
-                                                    .fill(colorInfo.swiftUIColor)
-                                                    .frame(width: 10, height: 10)
+                                            // 显示颜色小格子
+                                            LazyVGrid(
+                                                columns: [GridItem(.adaptive(minimum: 10))],
+                                                spacing: 5
+                                            ) {
+                                                ForEach(store.colorDict[category] ?? [], id: \.name) {
+                                                    colorInfo in
+                                                    Rectangle()
+                                                        .fill(colorInfo.swiftUIColor)
+                                                        .frame(width: 10, height: 10)
+                                                }
                                             }
                                         }
+                                        .padding()
+                                        .background(Color(UIColor.secondarySystemBackground))
+                                        .cornerRadius(10)
                                     }
-                                    .padding()
-                                    .background(Color(UIColor.secondarySystemBackground))
-                                    .cornerRadius(10)
+                                }
+                            } else {
+                                // 显示搜索到的单个颜色
+                                ForEach(filteredColors, id: \.name) { color in
+                                    ColorCardView(colorInfo: color)
                                 }
                             }
                         }
