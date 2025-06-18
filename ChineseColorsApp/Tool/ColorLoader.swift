@@ -56,7 +56,7 @@ struct ColorLoader {
     static func loadColors(from fileName: String) throws -> OrderedDictionary<String, [ColorModel]> {
         // 首先尝试在 Color Jsons 子目录中查找
         guard
-            let url = Bundle.main.url(forResource: fileName, withExtension: "json", subdirectory: "Color Jsons")
+            let url = Bundle.main.url(forResource: fileName, withExtension: "json", subdirectory: "ColorJsons")
                 ?? Bundle.main.url(forResource: fileName, withExtension: "json")
         else {
             // 调试信息：打印 Bundle 中的所有路径

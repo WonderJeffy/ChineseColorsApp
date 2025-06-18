@@ -16,7 +16,7 @@ struct ContentView: View {
     @StateObject private var store = ColorDataStore()
     @State private var searchText: String = ""
     @State private var showingDataSourcePicker = false
-    
+
     // 搜索过滤逻辑
     var filteredCategories: [String] {
         if searchText.isEmpty {
@@ -30,53 +30,46 @@ struct ContentView: View {
             }
         }
     }
-    
+
     // 定义网格布局：自适应列宽，最小宽度 160
     let columns: [GridItem] = [
         GridItem(.adaptive(minimum: 160), spacing: 15)
     ]
-    
+
     var body: some View {
         NavigationView {
             VStack {
-                // 数据源选择器和搜索栏
-                VStack {
-                    HStack {
-                        Text("数据源: \(store.currentDataSource)")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                        
-                        Spacer()
-                        
-                        Button("切换数据源") {
-                            showingDataSourcePicker = true
-                        }
-                        .font(.caption)
-                    }
-                    .padding(.horizontal)
-                    
-                    // 搜索栏
-                    TextField("搜索颜色名称", text: $searchText)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding(.horizontal)
-                }
-                
                 if store.isLoading {
                     ProgressView("加载中...")
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
                     ScrollView {
+                        VStack {
+                            // 搜索栏
+                            TextField("搜索颜色名称", text: $searchText)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .padding(.horizontal)
+                        }
                         LazyVGrid(columns: columns, spacing: 15) {
                             ForEach(filteredCategories, id: \.self) { category in
-                                NavigationLink(destination: CategoryDetailView(category: category, colors: store.colorDict[category] ?? [])) {
+                                NavigationLink(
+                                    destination: CategoryDetailView(
+                                        category: category,
+                                        colors: store.colorDict[category] ?? []
+                                    )
+                                ) {
                                     VStack(alignment: .leading) {
                                         Text(category)
                                             .font(.headline)
                                             .padding(.bottom, 5)
-                                        
+
                                         // 显示颜色小格子
-                                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 10))], spacing: 5) {
-                                            ForEach(store.colorDict[category] ?? [], id: \.name) { colorInfo in
+                                        LazyVGrid(
+                                            columns: [GridItem(.adaptive(minimum: 10))],
+                                            spacing: 5
+                                        ) {
+                                            ForEach(store.colorDict[category] ?? [], id: \.name) {
+                                                colorInfo in
                                                 Rectangle()
                                                     .fill(colorInfo.swiftUIColor)
                                                     .frame(width: 10, height: 10)
@@ -94,6 +87,14 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("中国传统色")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("切换数据源") {
+                        showingDataSourcePicker = true
+                    }
+                    .font(.caption)
+                }
+            }
             .onAppear {
                 Task {
                     await store.loadColors(from: store.currentDataSource)
@@ -103,6 +104,7 @@ struct ContentView: View {
                 DataSourcePickerView(store: store)
             }
         }
+        
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
@@ -111,7 +113,7 @@ struct ContentView: View {
 struct DataSourcePickerView: View {
     @ObservedObject var store: ColorDataStore
     @Environment(\.dismiss) private var dismiss
-    
+
     var body: some View {
         NavigationView {
             List {
